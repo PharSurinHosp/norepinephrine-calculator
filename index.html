@@ -274,7 +274,7 @@
                 <!-- v1.1: กล่องแจ้งเตือนค่าติดลบ/ไม่ใช่ตัวเลขของช่องน้ำหนัก -->
                 <div id="weight-error" class="input-error-box"></div>
                 <div id="weight-warning" style="display:none; margin-top:12px; background:#fff8e1; color:#8a6100; border:2px solid #f9a825; padding:12px; border-radius:8px; font-size:14px; font-weight:bold; text-align:center;">
-                    ★ BW &gt; 100 Kg : <span class="hl-amber">อาจพิจารณา</span>ใช้น้ำหนักสูงสุดที่ 100 Kg หรือพิจารณา Non-weight-base (mcg/min) แทนหากพิจารณาว่าการให้ยาตามน้ำหนักจริงจะทำให้ได้รับยาปริมาณสูงเกินความจำเป็น 
+                    ★ BW &gt; 100 Kg : <span class="hl-amber">อาจพิจารณา</span>ใช้ AdjBw/IBW หรือพิจารณา Non-weight-base (mcg/min) แทนหากพิจารณาว่าการให้ยาตามน้ำหนักจริงจะทำให้ได้รับยาปริมาณสูงเกิน 
                 </div>
             </div>
             <div>
@@ -294,7 +294,7 @@
                 <div style="flex:1; text-align:center;">
                     <div style="font-size:14px; font-weight:bold; color:#666;">Rate เริ่มต้น (mL/hr)</div>
                     <div class="res-large" id="out-rate" style="font-size:34px; color:#1877f2;">0.0</div>
-                    <div style="font-size:11.5px; color:#999;">ตั้งค่าที่เครื่องปั๊มตอนเริ่มให้ยา</div>
+                    <div style="font-size:11.5px; color:#999;">ตั้งค่าที่เครื่องตอนเริ่มให้ยา</div>
                 </div>
                 <div style="flex:1; text-align:center; border-left:1px solid #eee; padding-left:12px;">
                     <div style="font-size:14px; font-weight:bold; color:#666;">Max Rate (mL/hr)</div>
@@ -309,29 +309,29 @@
         </div>
 
         <div class="card" style="background:#fff8e7; border: 2px solid #f57f17;">
-            <div style="font-size:14px; font-weight:bold; color:#8a5300;">⭐ ขวดนี้อยู่ได้นานสุดประมาณ</div>
+            <div style="font-size:14px; font-weight:bold; color:#8a5300;">⭐ ยาที่ผสมแล้ว 1 ขวดจะให้หมดภายใน(hr)</div>
             <div style="display:flex; gap:14px; margin-top:8px;">
                 <div>
-                    <div style="font-size:11.5px; color:#8a5300;">ถ้าคงอัตราปัจจุบัน (<span id="out-rate-ref">-</span> mL/hr)</div>
+                    <div style="font-size:11.5px; color:#8a5300;">ถ้าให้ตาม Rate เริ่มต้นตลอด (<span id="out-rate-ref">-</span> mL/hr)</div>
                     <div style="font-size:22px; font-weight:bold; color:#8a5300;"><span id="out-time-current">0.0</span> <span style="font-size:13px; font-weight:normal;">ชม.</span></div>
                 </div>
                 <div style="border-left:1px solid rgba(0,0,0,0.1); padding-left:14px;">
-                    <div style="font-size:11.5px; color:#c62828;">ถ้า titrate ถึงเพดานสูงสุด (<span id="out-maxrate-ref">-</span> mL/hr)</div>
+                    <div style="font-size:11.5px; color:#c62828;">ถ้า titrate ถึง max dosse (<span id="out-maxrate-ref">-</span> mL/hr)</div>
                     <div style="font-size:22px; font-weight:bold; color:#c62828;"><span id="out-time-max">0.0</span> <span style="font-size:13px; font-weight:normal;">ชม.</span></div>
                 </div>
             </div>
-            <div style="font-size:12px; color:#8a5300; margin-top:8px; opacity:0.8;">*สูงสุดไม่เกิน 24 ชม. ตามอายุยา ทั้ง 2 ค่า</div>
+            <div style="font-size:12px; color:#8a5300; margin-top:8px; opacity:0.8;">*ยาที่ผสมแล้วทุกขวดมีอายุสูงสุดไม่เกิน 24 ชม. ตามอายุยา</div>
         </div>
 
         <div class="card" style="background:#e3f6f4; border: 2px solid #00897b;">
-            <div style="font-size:14px; font-weight:bold; color:#00594c;">✎ จำนวนยาตลอด 24 ชม. ที่ต้องเตรียม</div>
+            <div style="font-size:14px; font-weight:bold; color:#00594c;">✎ จำนวนยาตลอด 24 ชม. ที่ต้องเตรียมจ่าย (Amp)</div>
             <div style="display:flex; gap:14px; margin-top:8px;">
                 <div>
-                    <div style="font-size:11.5px; color:#00594c;">ถ้าคงอัตราปัจจุบัน</div>
+                    <div style="font-size:11.5px; color:#00594c;">ถ้าให้ตาม Rate เริ่มต้น</div>
                     <div style="font-size:22px; font-weight:bold; color:#00594c;"><span id="out-total-current">0</span> <span style="font-size:13px; font-weight:normal;">Amp</span></div>
                 </div>
                 <div style="border-left:1px solid rgba(0,0,0,0.1); padding-left:14px;">
-                    <div style="font-size:11.5px; color:#c62828;">ถ้า titrate ถึงเพดานสูงสุด</div>
+                    <div style="font-size:11.5px; color:#c62828;">ถ้า titrate ถึง Max dose</div>
                     <div style="font-size:22px; font-weight:bold; color:#c62828;"><span id="out-total-max">0</span> <span style="font-size:13px; font-weight:normal;">Amp</span></div>
                 </div>
             </div>
@@ -351,7 +351,7 @@
                     ⚠️ เกิน 20 mcg/min — เข้าเกณฑ์ระดับ Refractory shock ต้องมีคำสั่งแพทย์เฉพาะรายรองรับ
                 </div>
                 <div id="mcgmin-danger" style="display:none; margin-top:10px; background:#ffebee; color:#c62828; border:2px solid #c62828; padding:10px; border-radius:8px; font-size:13px; font-weight:bold; text-align:center;">
-                    🚫 เกิน 30 mcg/min — เกินเพดานสูงสุดตาม Standing Order แม้ในภาวะ Refractory shock ควรทบทวนคำสั่งยาด่วน
+                    🚫 เกิน 30 mcg/min — เกินเพดานสูงสุดตาม Standing Order แม้ในภาวะ Refractory shock ควรทบทวนคำสั่งใช้ยา
                 </div>
                 <div style="font-size:11px; color:#6366f1; margin-top:8px; opacity:0.85;">*เกณฑ์อ้างอิงจาก Standing Order (หัวข้อ 9 และ 10 ในแท็บ Protocol/ข้อมูล) — ใช้ประกอบการตรวจสอบข้าม ไม่ใช่การแทนที่ดุลยพินิจทางคลินิก</div>
             </div>
@@ -574,13 +574,13 @@
                     </div>
                 </div>
                 <div class="summary-rate-box">
-                    <div style="font-size:12px; color:#666;">ตั้งค่า Infusion Rate เริ่มต้นที่เครื่องปั๊ม</div>
+                    <div style="font-size:12px; color:#666;">ตั้งค่า Infusion Rate เริ่มต้นที่เครื่อง Infusion pump</div>
                     <div id="sum-rate" style="font-size:32px; font-weight:bold; color:#1877f2;">-</div>
                     <div style="font-size:12px; color:#666;">mL/hr</div>
                 </div>
                 <div id="sum-central-warning" class="summary-warning">🔒 ต้องบริหารยาผ่าน Central Line เท่านั้น</div>
                 <div id="sum-dose-warning" class="summary-warning">⚠️ Max dose : 1 mcg/kg/min *ขนาดยามากกว่านี้ต้องติดตามภาวะ Extravasation อย่างใกล้ชิด*</div>
-                <div id="sum-weight-warning" class="summary-warning" style="background:#fff8e1; color:#8a6100; border-color:#f9a825;">★ BW &gt; 100 Kg : <span class="hl-amber">อาจพิจารณา</span>ใช้น้ำหนักสูงสุดที่ 100 Kg หรือพิจารณา Non-weight-base (mcg/min) แทนหากพิจารณาว่าการให้ยาตามน้ำหนักจริงจะทำให้ได้รับยาปริมาณสูงเกินความจำเป็น</div>
+                <div id="sum-weight-warning" class="summary-warning" style="background:#fff8e1; color:#8a6100; border-color:#f9a825;">★ BW &gt; 100 Kg : <span class="hl-amber">อาจพิจารณา</span>ใช้ AdjBw/IBW หรือพิจารณา Non-weight-base (mcg/min) แทนหากพิจารณาว่าการให้ยาตามน้ำหนักจริงจะทำให้ได้รับยาปริมาณสูงเกิน</div>
                 <div>
                     <div class="summary-row-label">วิธีเตรียม/ผสมยา</div>
                     <div id="sum-prep" style="font-size:14px; color:#333; line-height:1.5;">-</div>
